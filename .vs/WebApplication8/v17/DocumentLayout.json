@@ -1,0 +1,96 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\marti\\source\\repos\\WebApplication8\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{064C7AAE-9142-4317-A54D-174A02F2CEA5}|WebApplication8.csproj|c:\\users\\marti\\source\\repos\\webapplication8\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{064C7AAE-9142-4317-A54D-174A02F2CEA5}|WebApplication8.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{064C7AAE-9142-4317-A54D-174A02F2CEA5}|WebApplication8.csproj|c:\\users\\marti\\source\\repos\\webapplication8\\validations\\updateproductodtovalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{064C7AAE-9142-4317-A54D-174A02F2CEA5}|WebApplication8.csproj|solutionrelative:validations\\updateproductodtovalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{064C7AAE-9142-4317-A54D-174A02F2CEA5}|WebApplication8.csproj|c:\\users\\marti\\source\\repos\\webapplication8\\validations\\productdtovalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{064C7AAE-9142-4317-A54D-174A02F2CEA5}|WebApplication8.csproj|solutionrelative:validations\\productdtovalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{064C7AAE-9142-4317-A54D-174A02F2CEA5}|WebApplication8.csproj|c:\\users\\marti\\source\\repos\\webapplication8\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{064C7AAE-9142-4317-A54D-174A02F2CEA5}|WebApplication8.csproj|solutionrelative:controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\WebApplication8\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\marti\\source\\repos\\WebApplication8\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T00:10:01.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UpdateProductoDtoValidation.cs",
+              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\WebApplication8\\Validations\\UpdateProductoDtoValidation.cs",
+              "RelativeDocumentMoniker": "Validations\\UpdateProductoDtoValidation.cs",
+              "ToolTip": "C:\\Users\\marti\\source\\repos\\WebApplication8\\Validations\\UpdateProductoDtoValidation.cs",
+              "RelativeToolTip": "Validations\\UpdateProductoDtoValidation.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T23:29:33.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductoController.cs",
+              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\WebApplication8\\Controllers\\ProductoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductoController.cs",
+              "ToolTip": "C:\\Users\\marti\\source\\repos\\WebApplication8\\Controllers\\ProductoController.cs",
+              "RelativeToolTip": "Controllers\\ProductoController.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAIwDUAAABrAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T23:18:44.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductDtoValidation.cs",
+              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\WebApplication8\\Validations\\ProductDtoValidation.cs",
+              "RelativeDocumentMoniker": "Validations\\ProductDtoValidation.cs",
+              "ToolTip": "C:\\Users\\marti\\source\\repos\\WebApplication8\\Validations\\ProductDtoValidation.cs",
+              "RelativeToolTip": "Validations\\ProductDtoValidation.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T23:18:06.952Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

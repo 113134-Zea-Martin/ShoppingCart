@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Editar </th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <a href="create.html" class="btn btn-secondary">Crear Producto</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+
+<script>
+    fetch('https://localhost:7292/api/Producto')
+        .then(respuesta => respuesta.json())
+        .then(response => {
+            console.log(response)
+            const body = document.getElementsByTagName("tbody")[0]
+            /*En la linea 48, lo que hace ese id= es asignar id a toda la fila. */
+            response.forEach(producto => {
+                body.innerHTML += `<tr id="row-${producto.id}">                    
+                            <th scope="row">${producto.id}</th>
+                            <td>${producto.name}</td>
+                            <td>${producto.description}</td>
+                            <td>${producto.price}</td>
+                            <td><button type="button" class="btn btn-primary" onclick="Editar('${producto.id}')">Editar</button></td>
+                            <td><button type="button" class="btn btn-primary" onclick="Eliminar('${producto.id}')">Eliminar</button></td>
+                        </tr>`
+            });
+        })
+
+    function Eliminar(idAEliminar) {
+        fetch(`https://localhost:7292/${idAEliminar}`, {
+            method: "DELETE"
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert(`Producto con ID ${idAEliminar} eliminado con exito`)
+                    document.getElementById(`row-${idAEliminar}`).remove()
+                } else {
+                    alert('Error al eliminar el producto')
+                }
+            })
+            .catch(error => {
+                alert('Error al eliminar el producto Catch')
+            })
+    }
+
+    function Editar(idAEditar) {
+        localStorage.setItem('idGuardado', idAEditar);
+        window.location.href = '/update.html';
+    }
+
+</script>
+
+</html>

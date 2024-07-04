@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Libro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Actualizar Producto</h1>
+        <form id="formActualizarProducto">
+            <div class="mb-3">
+                <label for="isbnSelect" class="form-label" id="idProducto">#ID: </label>
+                <!-- Opciones de ISBN se cargarán dinámicamente -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="nameInput" class="form-label">Título</label>
+                <input type="text" class="form-control" id="nameInput" name="Name"
+                    placeholder="Ingrese el nombre del producto" required>
+            </div>
+            <div class="mb-3">
+                <label for="descripcionInput" class="form-label">Descripcion</label>
+                <input type="text" class="form-control" id="descripcionInput" name="descripcion" required>
+            </div>
+            <div class="mb-3">
+                <label for="priceInput" class="form-label">Precio</label>
+                <input type="text" class="form-control" id="priceInput" name="price" required>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary" onclick="ActualizarProducto()">Actualizar</button> <!-- Aqui no pasamos parametro a la funcion ActualizarProducto() ya que
+                    estamos recibiendo el id del producto a actualizar por el localstorage. Ver linea 51, si no fueses así, si debemos 
+                    asignarle un argumento a recibir: Ejemplo onclick="Eliminar('${libro.isbn}')"-->
+                <a href="products.html" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    
+        
+
+
+    <script>
+
+        var idGuardado = localStorage.getItem('idGuardado');
+        var body = document.getElementById("idProducto");
+
+        const nameEl = document.getElementById("nameInput");
+        const descritionEl = document.getElementById("descripcionInput");
+        const precioEl = document.getElementById("priceInput");
+
+
+        body.textContent += idGuardado;
+
+        function ActualizarProducto() {
+            fetch(`https://localhost:7292/${idGuardado}`, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: nameEl.value,
+                    description: descritionEl.value,
+                    price: precioEl.value,
+                }),
+            })
+        }
+    </script>
+
+
+    <!--
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isbnSelect = document.getElementById('isbnSelect');
+            const tituloInput = document.getElementById('tituloInput');
+            const fechaInput = document.getElementById('fechaInput');
+            const autorSelect = document.getElementById('autorSelect');
+            const generoSelect = document.getElementById('generoSelect');
+
+            // Cargar opciones de ISBNs
+            fetch(`https://localhost:7024/api/Libro`)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(libro => {
+                        isbnSelect.innerHTML += `<option value="${libro.isbn}">${libro.isbn}</option>`;
+                    });
+                })
+                .catch(error => console.error('Error al obtener los ISBNs:', error));
+
+            // Cargar opciones de autores
+            fetch('https://localhost:7024/api/Autor')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(autor => {
+                        autorSelect.innerHTML += `<option value="${autor.idAutor}">${autor.nombre}</option>`;
+                    });
+                })
+                .catch(error => console.error('Error al obtener los autores:', error));
+
+            // Cargar opciones de géneros
+            fetch('https://localhost:7024/api/Generos')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(genero => {
+                        generoSelect.innerHTML += `<option value="${genero.idGenero}">${genero.nombre}</option>`;
+                    });
+                })
+                .catch(error => console.error('Error al obtener los géneros:', error));
+
+            // Actualizar campos al cambiar ISBN
+            isbnSelect.addEventListener('change', () => {
+                const isbnBuscado = isbnSelect.value;
+                if (isbnBuscado) {
+                    fetch(`https://localhost:7024/${isbnSelect.value}`)
+                        .then(response => response.json())
+                        .then(libro => {
+                            tituloInput.value = libro.titulo;
+                            fechaInput.value = libro.fechaPublicacion.split('T')[0]; // Remover la parte de tiempo
+                            autorSelect.value = libro.autorId;
+                            generoSelect.value = libro.generoId;
+                        })
+                        .catch(error => console.error('Error al obtener los datos del libro:', error));
+                } else {
+                    tituloInput.value = '';
+                    fechaInput.value = '';
+                    autorSelect.value = '';
+                    generoSelect.value = '';
+                }
+            });
+        });
+
+        document.getElementById('formActualizarLibro').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+            const isbnElement = document.getElementById("isbnSelect");
+            const tituloElement = document.getElementById("tituloInput");
+            const fechaElement = document.getElementById("fechaInput");
+            const autorElement = document.getElementById("autorSelect");
+            const generoElement = document.getElementById("generoSelect");
+
+            fetch(`https://localhost:7024/${isbnElement.value}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    isbn: isbnElement.value,
+                    titulo: tituloElement.value,
+                    fechaPublicacion: fechaElement.value,
+                    autorId: autorElement.value,
+                    generoId: generoElement.value
+                })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error al actualizar el libro');
+                    }
+                })
+                .then(response => {
+                    console.log('Libro actualizado:', response);
+                    alert('Libro actualizado exitosamente');
+                    // Redireccionar o limpiar el formulario aquí si es necesario
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al actualizar el libro');
+                });
+        });
+    </script>
+    -->
+
+</body>
+
+</html>
